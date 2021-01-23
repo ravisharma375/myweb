@@ -1039,6 +1039,7 @@
 		<!-- ==== Main Script ==== -->
 		<script src="js/main.js"></script>
 		<script>
+		
 			$("#contactForm").on("submit", function (e) {
 				var Name = $("#Name").val();
 				var Email = $("#Email").val();
@@ -1054,16 +1055,21 @@
 						data: formData,
 						success: function (response) {
 							if (response.success == true) {
-								$("#error").append(
+								setTimeout(() => {
+									$("#error").append(
 									`<div class='alert alert-success'  role='alert'>Thanks  ${Name} Your message has been sent.</div>`,
 								);
+								}, 4000);
+								
 							} else {
-								$("#error").append(
-									`<div class='alert alert-danger'  role='alert'>${response.Message}</div>`,
-								);
+								setTimeout(() => {
+									$("#error").append(
+									`<div class='alert alert-danger'  role='alert'>${response.message}</div>`,
+								);	
+								}, 4000);
+								
 							}
 						},
-						error: function (response) {},
 					});
 				}
 			});
